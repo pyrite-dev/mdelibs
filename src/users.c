@@ -3,7 +3,7 @@
 
 #include <pwd.h>
 
-void MDEListUsers(void(*call)(const char* name, void* user), void* user){
+void MDEUsersList(void(*call)(const char* name, void* user), void* user){
 	struct passwd* pwd;
 
 	setpwent();

@@ -1,7 +1,6 @@
 #include <MDE/File.h>
 
 #include <stdio.h>
-#include <stdlib.h>
 
 void MDEFileCopy(const char* src, const char* dst){
 	char buffer[4096];

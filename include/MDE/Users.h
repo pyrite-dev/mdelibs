@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-void MDEListUsers(void(*call)(const char* name, void* user), void* user);
+void MDEUsersList(void(*call)(const char* name, void* user), void* user);
 
 #ifdef __cplusplus
 }
