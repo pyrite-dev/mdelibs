@@ -1,5 +1,5 @@
-#ifndef __MDE_FILE_H__
-#define __MDE_FILE_H__
+#ifndef __MDE_STRING_H__
+#define __MDE_STRING_H__
 
 #include <MDE/MachDep.h>
 
@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-void MDEFileCopy(const char* src, const char* dst);
+char* MDEStringDuplicate(const char* src);
 
 #ifdef __cplusplus
 }

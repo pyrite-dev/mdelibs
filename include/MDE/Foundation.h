@@ -4,5 +4,6 @@
 #include <MDE/MachDep.h>
 
 #include <MDE/File.h>
+#include <MDE/String.h>
 
 #endif
