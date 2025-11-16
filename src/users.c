@@ -19,7 +19,7 @@ void MDEListUsers(void(*call)(const char* name, void* user), void* user){
 		if(pwd->pw_dir == NULL || pwd->pw_shell == NULL) continue;
 		if(pwd->pw_name[0] == '_') continue;
 
-		if(strlen(pwd->pw_dir) >= 5 && memcmp(pwd->pw_dir, "/var/", 5) == 0) continue;
+		if(pwd->pw_uid != 0 && strstr(pwd->pw_dir, "/home/") == NULL) continue;
 
 		shell = strrchr(pwd->pw_shell, '/');
 		if(shell == NULL) break;
