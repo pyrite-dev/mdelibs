@@ -3,4 +3,6 @@
 
 #include <MDE/MachDep.h>
 
+#include <MDE/File.h>
+
 #endif
