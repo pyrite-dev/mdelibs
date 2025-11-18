@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-void MDEDirectoryScan(const char* path, void (*call)(const char* name, int dir, void* user), void* user);
+void MDEDirectoryScan(const char* path, void (*call)(const char* name, int dir, int symlink, void* user), void* user);
 
 #ifdef __cplusplus
 }
