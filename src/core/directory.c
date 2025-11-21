@@ -1,7 +1,5 @@
-#include <MDE/Directory.h>
+#include <MDE/Core/Directory.h>
 
-#include <stdlib.h>
-#include <string.h>
 #include <dirent.h>
 #include <sys/stat.h>
 

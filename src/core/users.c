@@ -1,5 +1,5 @@
-#include <MDE/Users.h>
-#include <MDE/String.h>
+#include <MDE/Core/Users.h>
+#include <MDE/Core/String.h>
 
 #include <pwd.h>
 

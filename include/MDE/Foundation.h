@@ -3,9 +3,11 @@
 
 #include <MDE/MachDep.h>
 
-#include <MDE/File.h>
-#include <MDE/String.h>
-#include <MDE/Users.h>
-#include <MDE/Directory.h>
+#include <MDE/Core/File.h>
+#include <MDE/Core/String.h>
+#include <MDE/Core/Users.h>
+#include <MDE/Core/Directory.h>
+
+#include <MDE/Audio/Audio.h>
 
 #endif
