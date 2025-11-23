@@ -9,6 +9,8 @@ extern "C" {
 
 char* MDEStringDuplicate(const char* src);
 
+char* MDEStringConcatenate(const char* str1, const char* str2);
+
 #ifdef __cplusplus
 }
 #endif

@@ -9,6 +9,10 @@ extern "C" {
 
 void MDEFileCopy(const char* src, const char* dst);
 
+char* MDEFileAbsolutePath(const char* path);
+
+char* MDEFileOptimizeAbsolutePath(const char* path);
+
 #ifdef __cplusplus
 }
 #endif

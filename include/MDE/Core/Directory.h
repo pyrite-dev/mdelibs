@@ -9,6 +9,10 @@ extern "C" {
 
 void MDEDirectoryScan(const char* path, void (*call)(const char* name, int dir, int symlink, void* user), void* user);
 
+void MDEDirectoryCreate(const char* path, int mode);
+
+char* MDEDirectoryCurrentPath(void);
+
 #ifdef __cplusplus
 }
 #endif
