@@ -31,7 +31,7 @@ static int drv_open(driver_t* drv) {
 		return 0;
 	}
 
-	drv->frames = 60 * MDEAudioRate / 1000;
+	drv->frames = 80 * MDEAudioRate / 1000;
 
 	return 1;
 }
