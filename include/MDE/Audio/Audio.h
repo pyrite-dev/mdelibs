@@ -1,5 +1,5 @@
-#ifndef __MDE_AUDIO_H__
-#define __MDE_AUDIO_H__
+#ifndef __MDE_AUDIO_AUDIO_H__
+#define __MDE_AUDIO_AUDIO_H__
 
 #include <MDE/MachDep.h>
 
@@ -12,15 +12,17 @@ extern "C" {
 /* always stereo, btw */
 #define MDEAudioRate 48000
 
+typedef void* MDEAudio;
+
 /* S16, stereo. frames*2*2 == bytes */
-typedef void (*MDEAudioHandler)(void* handle, void* user, void* data, int frames);
+typedef void (*MDEAudioHandler)(MDEAudio handle, void* user, void* data, int frames);
 
 /* driver functions */
-void* MDEAudioOpen(MDEAudioHandler handler, void* user);
+MDEAudio MDEAudioOpen(MDEAudioHandler handler, void* user);
 
-void MDEAudioClose(void* handle);
+void MDEAudioClose(MDEAudio handle);
 
-void MDEAudioStart(void* handle);
+void MDEAudioStart(MDEAudio handle);
 
 #ifdef __cplusplus
 }

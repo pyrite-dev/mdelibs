@@ -10,4 +10,7 @@
 
 #include <MDE/Audio/Audio.h>
 
+#include <MDE/Sound/Sound.h>
+#include <MDE/Sound/ID3.h>
+
 #endif

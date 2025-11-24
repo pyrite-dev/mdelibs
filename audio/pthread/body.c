@@ -22,7 +22,7 @@ static void* thread_routine(void* arg) {
 	return NULL;
 }
 
-void* MDEAudioOpen(MDEAudioHandler handler, void* user) {
+MDEAudio MDEAudioOpen(MDEAudioHandler handler, void* user) {
 	int	  rate = MDEAudioRate;
 	driver_t* drv  = malloc(sizeof(*drv));
 	memset(drv, 0, sizeof(*drv));
@@ -42,7 +42,7 @@ void* MDEAudioOpen(MDEAudioHandler handler, void* user) {
 	return drv;
 }
 
-void MDEAudioClose(void* handle) {
+void MDEAudioClose(MDEAudio handle) {
 	driver_t* drv = handle;
 	void*	  ret;
 
@@ -60,7 +60,7 @@ void MDEAudioClose(void* handle) {
 	free(drv);
 }
 
-void MDEAudioStart(void* handle) {
+void MDEAudioStart(MDEAudio handle) {
 	driver_t* drv = handle;
 
 	pthread_create(&drv->thread, NULL, thread_routine, handle);
