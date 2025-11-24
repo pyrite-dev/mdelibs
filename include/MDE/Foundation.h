@@ -7,6 +7,7 @@
 #include <MDE/Core/String.h>
 #include <MDE/Core/Users.h>
 #include <MDE/Core/Directory.h>
+#include <MDE/Core/AboutDialog.h>
 
 #include <MDE/Audio/Audio.h>
 

@@ -1,5 +1,5 @@
-#ifndef __MDE_DIRECTORY_H__
-#define __MDE_DIRECTORY_H__
+#ifndef __MDE_CORE_DIRECTORY_H__
+#define __MDE_CORE_DIRECTORY_H__
 
 #include <MDE/MachDep.h>
 

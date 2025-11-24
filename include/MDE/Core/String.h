@@ -1,5 +1,5 @@
-#ifndef __MDE_STRING_H__
-#define __MDE_STRING_H__
+#ifndef __MDE_CORE_STRING_H__
+#define __MDE_CORE_STRING_H__
 
 #include <MDE/MachDep.h>
 

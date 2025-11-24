@@ -1,5 +1,5 @@
-#ifndef __MDE_USERS_H__
-#define __MDE_USERS_H__
+#ifndef __MDE_CORE_USERS_H__
+#define __MDE_CORE_USERS_H__
 
 #include <MDE/MachDep.h>
 
