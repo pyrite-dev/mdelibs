@@ -36,6 +36,8 @@ static MDESoundContext vorbis_open(const char* path) {
 					ctx->artist = MDEStringDuplicate(p + 1);
 				} else if(strcasecmp(s, "GENRE") == 0) {
 					ctx->genre = MDEStringDuplicate(p + 1);
+				} else if(strcasecmp(s, "TRACK") == 0) {
+					ctx->track = atoi(p + 1);
 				}
 			}
 

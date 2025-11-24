@@ -6,12 +6,24 @@
 
 static MDESoundContext mp3_open(const char* path) {
 	MDESoundContext ctx = malloc(sizeof(*ctx));
+	char*		s;
 	memset(ctx, 0, sizeof(*ctx));
 
 	ctx->title  = MDEID3GetString(path, "TIT2");
 	ctx->artist = MDEID3GetString(path, "TPE1");
 	ctx->album  = MDEID3GetString(path, "TALB");
 	ctx->genre  = MDEID3GetString(path, "TCON");
+	ctx->track  = 0;
+
+	s = MDEID3GetString(path, "TRCK");
+	if(s != NULL) {
+		char* t = strchr(s, '/');
+		if(t != NULL) t[0] = 0;
+
+		ctx->track = atoi(s);
+
+		free(s);
+	}
 
 	ctx->opaque = malloc(sizeof(drmp3));
 	if(!drmp3_init_file(ctx->opaque, path, NULL)) {

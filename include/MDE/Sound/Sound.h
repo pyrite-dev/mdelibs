@@ -18,10 +18,11 @@ struct _MDESoundContext {
 	int   frames;
 	void* opaque;
 
-	char* title;
-	char* album;
-	char* artist;
-	char* genre;
+	char*	     title;
+	char*	     album;
+	char*	     artist;
+	char*	     genre;
+	unsigned int track;
 };
 
 struct _MDESoundDriver {
