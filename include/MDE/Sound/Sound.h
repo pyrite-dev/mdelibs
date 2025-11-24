@@ -10,6 +10,7 @@ extern "C" {
 typedef struct _MDESoundDriver	 MDESoundDriverRec, *MDESoundDriver;
 typedef struct _MDESoundContext* MDESoundContext;
 typedef struct _MDESound*	 MDESound;
+typedef struct _MDESoundBuffer	 MDESoundBuffer;
 
 struct _MDESoundContext {
 	int   sample_rate;
@@ -30,12 +31,20 @@ struct _MDESoundDriver {
 	void (*seek)(MDESoundContext context, int frames);
 };
 
+struct _MDESoundBuffer {
+	short* data;
+	int    frames;
+	int    seek;
+};
+
 struct _MDESound {
 	MDESoundContext context;
 	MDESoundDriver	driver;
+	MDESoundBuffer* buffer;
 };
 
 extern MDESoundDriver MDESoundDriverMP3;
+extern MDESoundDriver MDESoundDriverVorbis;
 
 MDESound MDESoundOpen(const char* path);
 

@@ -27,11 +27,6 @@ static MDESoundContext mp3_open(const char* path){
 }
 
 static void mp3_close(MDESoundContext ctx){
-	if(ctx->title != NULL) free(ctx->title);
-	if(ctx->artist != NULL) free(ctx->artist);
-	if(ctx->album != NULL) free(ctx->album);
-	if(ctx->genre != NULL) free(ctx->genre);
-
 	drmp3_uninit(ctx->opaque);
 	free(ctx->opaque);
 	free(ctx);
