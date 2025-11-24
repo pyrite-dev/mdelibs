@@ -5,7 +5,7 @@ find_package(PkgConfig)
 macro(check_backend uppername name)
 	if(NOT BACKEND_FOUND)
 		pkg_check_modules(${uppername} ${name})
-		if(AO_FOUND)
+		if(${uppername}_FOUND)
 			target_include_directories(
 				MDEAudio
 				PRIVATE
