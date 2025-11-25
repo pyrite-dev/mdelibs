@@ -8,6 +8,8 @@
 #include <MDE/Core/Users.h>
 #include <MDE/Core/Directory.h>
 #include <MDE/Core/AboutDialog.h>
+#include <MDE/Core/Thread.h>
+#include <MDE/Core/Mutex.h>
 
 #include <MDE/Audio/Audio.h>
 

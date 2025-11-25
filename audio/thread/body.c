@@ -1,4 +1,4 @@
-static void* thread_routine(void* arg) {
+static void thread_routine(void* arg) {
 	driver_t* drv = arg;
 	void*	  data;
 
@@ -9,17 +9,15 @@ static void* thread_routine(void* arg) {
 
 		drv_write(drv, data, drv->frames);
 
-		pthread_mutex_lock(&drv->mutex);
+		MDEMutexLock(drv->mutex);
 		if(drv->quit) {
-			pthread_mutex_unlock(&drv->mutex);
+			MDEMutexUnlock(&drv->mutex);
 			break;
 		}
-		pthread_mutex_unlock(&drv->mutex);
+		MDEMutexUnlock(drv->mutex);
 	}
 
 	free(data);
-
-	return NULL;
 }
 
 MDEAudio MDEAudioOpen(MDEAudioHandler handler, void* user) {
@@ -32,7 +30,7 @@ MDEAudio MDEAudioOpen(MDEAudioHandler handler, void* user) {
 	drv->user    = user;
 	drv->init    = 0;
 
-	pthread_mutex_init(&drv->mutex, NULL);
+	drv->mutex = MDEMutexCreate();
 
 	if(!(drv->init = drv_open(drv))) {
 		MDEAudioClose(drv);
@@ -44,16 +42,15 @@ MDEAudio MDEAudioOpen(MDEAudioHandler handler, void* user) {
 
 void MDEAudioClose(MDEAudio handle) {
 	driver_t* drv = handle;
-	void*	  ret;
 
 	if(drv->init) {
-		pthread_mutex_lock(&drv->mutex);
+		MDEMutexLock(drv->mutex);
 		drv->quit = 1;
-		pthread_mutex_unlock(&drv->mutex);
-		pthread_join(drv->thread, &ret);
+		MDEMutexLock(drv->mutex);
+		MDEThreadJoin(drv->thread);
 	}
 
-	pthread_mutex_destroy(&drv->mutex);
+	MDEMutexDestroy(drv->mutex);
 
 	drv_close(drv);
 
@@ -63,5 +60,5 @@ void MDEAudioClose(MDEAudio handle) {
 void MDEAudioStart(MDEAudio handle) {
 	driver_t* drv = handle;
 
-	pthread_create(&drv->thread, NULL, thread_routine, handle);
+	drv->thread = MDEThreadCreate(thread_routine, handle);
 }

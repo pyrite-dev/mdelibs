@@ -13,6 +13,8 @@ void MDEDirectoryCreate(const char* path, int mode);
 
 char* MDEDirectoryCurrentPath(void);
 
+char* MDEDirectoryConfigPath(void);
+
 #ifdef __cplusplus
 }
 #endif

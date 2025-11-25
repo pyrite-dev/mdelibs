@@ -2,6 +2,10 @@
 #include <MDE/Core/String.h>
 #include <MDE/Core/Directory.h>
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 void MDEFileCopy(const char* src, const char* dst) {
 	char  buffer[4096];
 	FILE* in;
@@ -65,6 +69,13 @@ char* MDEFileOptimizeAbsolutePath(const char* path) {
 }
 
 char* MDEFileAbsolutePath(const char* path) {
+#ifdef _WIN32
+	char* r = malloc(MAX_PATH);
+
+	GetFullPathName(path, MAX_PATH, r, NULL);
+
+	return r;
+#else
 	char* p;
 	char* r;
 
@@ -83,4 +94,5 @@ char* MDEFileAbsolutePath(const char* path) {
 	free(p);
 
 	return r;
+#endif
 }

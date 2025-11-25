@@ -1,6 +1,12 @@
 #include <MDE/Core/Users.h>
 #include <MDE/Core/String.h>
 
+#ifdef _WIN32
+void MDEUsersList(void (*call)(const char* name, void* user), void* user) {
+	/* wow */
+	call("Administrator", user);
+}
+#else
 #include <pwd.h>
 
 void MDEUsersList(void (*call)(const char* name, void* user), void* user) {
@@ -37,3 +43,4 @@ void MDEUsersList(void (*call)(const char* name, void* user), void* user) {
 	}
 	endpwent();
 }
+#endif

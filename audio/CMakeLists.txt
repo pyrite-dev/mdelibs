@@ -1,4 +1,11 @@
+include(MDEPkgConfig)
+
 setup_lib(audio Audio)
+target_link_libraries(
+	MDEAudio
+	PRIVATE
+	MDECore
+)
 
 find_package(PkgConfig)
 
@@ -29,7 +36,7 @@ macro(check_backend uppername name)
 			target_link_libraries(
 				MDEAudio
 				PRIVATE
-				${${uppername}_LIBRARIES} pthread
+				${${uppername}_LIBRARIES}
 			)
 			target_compile_definitions(
 				MDEAudio

@@ -1,6 +1,6 @@
 #include <MDE/Audio/Audio.h>
-
-#include <pthread.h>
+#include <MDE/Core/Thread.h>
+#include <MDE/Core/Mutex.h>
 
 typedef struct driver {
 	driver_context_t context;
@@ -11,7 +11,7 @@ typedef struct driver {
 	MDEAudioHandler handler;
 	void*		user;
 
-	int		quit;
-	pthread_t	thread;
-	pthread_mutex_t mutex;
+	int	  quit;
+	MDEThread thread;
+	MDEMutex  mutex;
 } driver_t;

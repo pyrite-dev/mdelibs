@@ -8,7 +8,7 @@ typedef struct driver_context {
 	ao_device*	 device;
 } driver_context_t;
 
-#include "pthread/decl.c"
+#include "thread/decl.c"
 
 static void drv_write(driver_t* drv, void* data, int frames) {
 	ao_play(drv->context.device, (char*)data, frames * 2 * 2);
@@ -42,5 +42,5 @@ static void drv_close(driver_t* drv) {
 	}
 }
 
-#include "pthread/body.c"
+#include "thread/body.c"
 #endif

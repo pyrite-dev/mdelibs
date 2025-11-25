@@ -6,6 +6,11 @@
 #include <stdarg.h>
 #include <string.h>
 #include <strings.h>
+#ifdef _WIN32
+#include <io.h>
+#include <direct.h>
+#else
 #include <unistd.h>
+#endif
 
 #endif

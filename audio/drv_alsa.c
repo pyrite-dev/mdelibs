@@ -8,7 +8,7 @@ typedef struct driver_context {
 	snd_pcm_hw_params_t* params;
 } driver_context_t;
 
-#include "pthread/decl.c"
+#include "thread/decl.c"
 
 static void drv_write(driver_t* drv, void* data, int frames) {
 	if(snd_pcm_writei(drv->context.device, data, frames) == -EPIPE) {
@@ -72,5 +72,5 @@ static void drv_close(driver_t* drv) {
 	}
 }
 
-#include "pthread/body.c"
+#include "thread/body.c"
 #endif
