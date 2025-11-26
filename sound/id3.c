@@ -104,24 +104,24 @@ char* MDEID3GetString(const char* path, const char* name) {
 
 		for(i = 1; i < (sz) / 2; i++) {
 			if(bom == 0xfffe) {
-				unsigned short n = 0;
+				unsigned int n = 0;
 				char b[4];
 				int l;
 				n		 = n << 8;
-				n		 = n | s[2 * i + 0];
+				n		 = n | d[1 + 2 * i + 0];
 				n		 = n << 8;
-				n		 = n | s[2 * i + 1];
+				n		 = n | d[1 + 2 * i + 1];
 				l = MwUTF32ToUTF8(n, b);
 				memcpy(s + incr, b, l);
 				incr += l;
 			} else if(bom == 0xfeff) {
-				unsigned short n = 0;
+				unsigned int n = 0;
 				char b[4];
 				int l;
 				n		 = n << 8;
-				n		 = n | s[2 * i + 1];
+				n		 = n | d[1 + 2 * i + 1];
 				n		 = n << 8;
-				n		 = n | s[2 * i + 0];
+				n		 = n | d[1 + 2 * i + 0];
 				l = MwUTF32ToUTF8(n, b);
 				memcpy(s + incr, b, l);
 				incr += l;
