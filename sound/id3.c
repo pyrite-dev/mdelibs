@@ -99,29 +99,29 @@ char* MDEID3GetString(const char* path, const char* name) {
 	memcpy(s, d + 1, sz - 1);
 	s[sz - 1] = 0;
 	if(d[0] == 1) {
-		unsigned short bom = *(unsigned short*)&s[0];
-		int incr = 0;
+		unsigned short bom  = *(unsigned short*)&s[0];
+		int	       incr = 0;
 
 		for(i = 1; i < (sz) / 2; i++) {
 			if(bom == 0xfffe) {
 				unsigned int n = 0;
-				char b[4];
-				int l;
-				n		 = n << 8;
-				n		 = n | d[1 + 2 * i + 0];
-				n		 = n << 8;
-				n		 = n | d[1 + 2 * i + 1];
+				char	     b[4];
+				int	     l;
+				n = n << 8;
+				n = n | d[1 + 2 * i + 0];
+				n = n << 8;
+				n = n | d[1 + 2 * i + 1];
 				l = MwUTF32ToUTF8(n, b);
 				memcpy(s + incr, b, l);
 				incr += l;
 			} else if(bom == 0xfeff) {
 				unsigned int n = 0;
-				char b[4];
-				int l;
-				n		 = n << 8;
-				n		 = n | d[1 + 2 * i + 1];
-				n		 = n << 8;
-				n		 = n | d[1 + 2 * i + 0];
+				char	     b[4];
+				int	     l;
+				n = n << 8;
+				n = n | d[1 + 2 * i + 1];
+				n = n << 8;
+				n = n | d[1 + 2 * i + 0];
 				l = MwUTF32ToUTF8(n, b);
 				memcpy(s + incr, b, l);
 				incr += l;

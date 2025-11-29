@@ -4,21 +4,21 @@
 #define DR_FLAC_IMPLEMENTATION
 #include <dr_flac.h>
 
-static void meta(void* user, drflac_metadata* metadata){
+static void meta(void* user, drflac_metadata* metadata) {
 	MDESoundContext ctx = user;
 
-	if(metadata->type == DRFLAC_METADATA_BLOCK_TYPE_VORBIS_COMMENT){
-		const char* comment;
+	if(metadata->type == DRFLAC_METADATA_BLOCK_TYPE_VORBIS_COMMENT) {
+		const char*		       comment;
 		drflac_vorbis_comment_iterator it;
-		drflac_uint32 len;
+		drflac_uint32		       len;
 
 		drflac_init_vorbis_comment_iterator(&it, metadata->data.vorbis_comment.commentCount, metadata->data.vorbis_comment.pComments);
-		while((comment = drflac_next_vorbis_comment(&it, &len)) != NULL){
+		while((comment = drflac_next_vorbis_comment(&it, &len)) != NULL) {
 			char* s = malloc(len + 1);
 			char* p;
 			memcpy(s, comment, len);
 			s[len] = 0;
-			p = strchr(s, '=');
+			p      = strchr(s, '=');
 			if(p != NULL) {
 				p[0] = 0;
 				if(strcasecmp(s, "TITLE") == 0) {
@@ -44,14 +44,14 @@ static MDESoundContext flac_open(const char* path) {
 	memset(ctx, 0, sizeof(*ctx));
 
 	ctx->opaque = drflac_open_file_with_metadata(path, meta, ctx, NULL);
-	if(ctx->opaque == NULL){
+	if(ctx->opaque == NULL) {
 		free(ctx);
 		return NULL;
 	}
 
 	ctx->sample_rate = ((drflac*)ctx->opaque)->sampleRate;
-	ctx->channels = ((drflac*)ctx->opaque)->channels;
-	ctx->frames = ((drflac*)ctx->opaque)->totalPCMFrameCount;
+	ctx->channels	 = ((drflac*)ctx->opaque)->channels;
+	ctx->frames	 = ((drflac*)ctx->opaque)->totalPCMFrameCount;
 
 	return ctx;
 }
