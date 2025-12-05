@@ -1,6 +1,6 @@
 #include <MDE/Core/AboutDialog.h>
 
-#define Copyright "Copyright (C) 2025 MDE Development Team"
+#define Copyright "Copyright (C) 2025 Pyrite development team"
 
 static void ok_activate(MwWidget handle, void* user, void* client) {
 	MwDestroyWidget(user);
