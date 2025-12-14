@@ -1,9 +1,6 @@
-setup_lib(core Core)
-target_link_libraries(
-	MDECore
-	PRIVATE
-	Mw
-)
+include(MDEBase)
+
+setup_library(MDECore ${CMAKE_INSTALL_LIBDIR})
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "Windows")
 	target_link_libraries(
 		MDECore

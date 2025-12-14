@@ -1,10 +1,6 @@
+include(MDEBase)
 include(MDEPkgConfig)
 
-setup_lib(sound Sound)
-target_link_libraries(
-	MDESound
-	PRIVATE
-	MDECore Mw
-)
+setup_library(MDESound ${CMAKE_INSTALL_LIBDIR})
 
 pkg_config_add(MDESound vorbisfile)

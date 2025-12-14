@@ -1,11 +1,7 @@
+include(MDEBase)
 include(MDEPkgConfig)
 
-setup_lib(audio Audio)
-target_link_libraries(
-	MDEAudio
-	PRIVATE
-	MDECore
-)
+setup_library(MDEAudio)
 
 find_package(PkgConfig)
 
