@@ -1,7 +1,7 @@
 include(MDEBase)
 include(MDEPkgConfig)
 
-setup_library(MDEAudio)
+mde_setup_library(MDEAudio)
 
 find_package(PkgConfig)
 
