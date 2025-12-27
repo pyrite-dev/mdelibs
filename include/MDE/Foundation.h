@@ -10,6 +10,7 @@
 #include <MDE/Core/AboutDialog.h>
 #include <MDE/Core/Thread.h>
 #include <MDE/Core/Mutex.h>
+#include <MDE/Core/Icon.h>
 
 #include <MDE/Audio/Audio.h>
 
