@@ -15,6 +15,8 @@ char* MDEStringConcatenate3(const char* str1, const char* str2, const char* str3
 
 char* MDEStringConcatenate4(const char* str1, const char* str2, const char* str3, const char* str4);
 
+char** MDEStringToExec(const char* exec, const char* file);
+
 #ifdef __cplusplus
 }
 #endif
