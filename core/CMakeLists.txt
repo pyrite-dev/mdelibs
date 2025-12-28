@@ -9,3 +9,5 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "Windows")
 		pthread
 	)
 endif()
+
+mde_pkg_config_add(MDECore inih)
